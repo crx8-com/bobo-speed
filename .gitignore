@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.zip
+*.tar.gz
+*.crx
+dist/
+.env
+.env.*
+!.env.example
+.edge-publisher-artifacts/
+

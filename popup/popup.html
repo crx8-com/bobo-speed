@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>波波倍速</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+  <div class="tech-popup">
+    <!-- 顶部状态栏 Header -->
+    <header class="popup-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            <line x1="19" y1="5" x2="19" y2="19"></line>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">波波倍速</span>
+          <span class="status-indicator" id="connection-status">
+            <span class="pulse-dot"></span>
+            <span class="status-text">就绪</span>
+          </span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="disable" class="icon-toggle-btn" title="启用/禁用扩展">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10" stroke-linecap="round" />
+          </svg>
+        </button>
+        <button id="config" class="icon-action-btn" title="详细设置">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 主仪表 HUD 核心卡片 -->
+    <main class="hud-card">
+      <div class="hud-glow-bg"></div>
+
+      <!-- 核心数字展示 -->
+      <div class="speed-display-wrapper">
+        <span class="speed-label">PLAYBACK RATE</span>
+        <div class="speed-value-row">
+          <span id="current-speed-val" class="speed-number">1.00</span>
+          <span class="speed-unit">×</span>
+        </div>
+      </div>
+
+      <!-- 滑轨无级调速 Slider -->
+      <div class="slider-wrapper">
+        <div class="slider-scale">
+          <span>0.5×</span>
+          <span>1.0×</span>
+          <span>2.0×</span>
+          <span>3.0×</span>
+          <span>4.0×</span>
+        </div>
+        <input type="range" id="speed-slider" min="0.25" max="4.00" step="0.05" value="1.00" class="tech-slider" />
+      </div>
+
+      <!-- 快速微调步进按钮 -->
+      <div class="stepper-controls">
+        <button id="speed-decrease" class="step-btn" data-delta="-0.1" title="减速 0.1×">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span class="step-text">-0.1</span>
+        </button>
+
+        <button id="speed-reset" class="reset-pill-btn" title="复位至 1.0× 原速">
+          <span>1.00× 原速</span>
+        </button>
+
+        <button id="speed-increase" class="step-btn" data-delta="0.1" title="加速 0.1×">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span class="step-text">+0.1</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- 常用预设胶囊矩阵 -->
+    <section class="section-container">
+      <div class="section-title">快速预设</div>
+      <div class="preset-pills-grid">
+        <button class="preset-pill" data-speed="0.75">0.75×</button>
+        <button class="preset-pill active" data-speed="1.0">1.0×</button>
+        <button class="preset-pill" data-speed="1.25">1.25×</button>
+        <button class="preset-pill" data-speed="1.5">1.5×</button>
+        <button class="preset-pill" data-speed="2.0">2.0×</button>
+        <button class="preset-pill" data-speed="2.5">2.5×</button>
+      </div>
+    </section>
+
+    <!-- 快捷动作条 Quick Actions -->
+    <section class="quick-actions-bar">
+      <button id="btn-rewind" class="action-btn" title="快退 10 秒">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 19 2 12 11 5 11 19"></polygon>
+          <polygon points="22 19 13 12 22 5 22 19"></polygon>
+        </svg>
+        <span>-10s</span>
+      </button>
+
+      <button id="btn-toggle-hud" class="action-btn" title="显示/隐藏页面悬浮球">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <span>浮层</span>
+      </button>
+
+      <button id="btn-forward" class="action-btn" title="快进 10 秒">
+        <span>+10s</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 19 22 12 13 5 13 19"></polygon>
+          <polygon points="2 19 11 12 2 5 2 19"></polygon>
+        </svg>
+      </button>
+    </section>
+
+    <!-- 底部状态反馈 Toast -->
+    <div id="status" class="toast-tip hide"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

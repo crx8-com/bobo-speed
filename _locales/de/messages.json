@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Video-Geschwindigkeitsregler - BoBo Speed",
+    "description": "Anzeigename der Erweiterung"
+  },
+  "shortName": {
+    "message": "BoBo Speed",
+    "description": "Kurzname der Erweiterung"
+  },
+  "extDesc": {
+    "message": "HTML5-Videos von 0.1x bis 16x beschleunigen oder verlangsamen mit Tastenkombinationen und Echtzeit-Geschwindigkeitsanzeige.",
+    "description": "Beschreibung der Erweiterung"
+  }
+}

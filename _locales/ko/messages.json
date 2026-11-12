@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "동영상 배속 재생 컨트롤러 - HTML5 비디오 속도 조절(BoBo)",
+    "description": "확장 프로그램 표시 이름"
+  },
+  "shortName": {
+    "message": "BoBo Speed",
+    "description": "확장 프로그램 짧은 이름"
+  },
+  "extDesc": {
+    "message": "HTML5 동영상 재생 속도를 0.1배에서 16배까지 자유롭게 조절! 단축키 지원, 빨리감기/되감기, 실시간 뱃지 연동. 인강 및 영상 시청 시간 절약 필수템.",
+    "description": "확장 프로그램 설명"
+  }
+}

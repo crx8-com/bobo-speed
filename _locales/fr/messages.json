@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Contrôleur de vitesse vidéo HTML5 - BoBo",
+    "description": "Nom d'affichage de l'extension"
+  },
+  "shortName": {
+    "message": "BoBo Speed",
+    "description": "Nom court de l'extension"
+  },
+  "extDesc": {
+    "message": "Accélérez ou ralentissez les vidéos HTML5 de 0.1x à 16x avec des raccourcis clavier et un badge de vitesse en direct.",
+    "description": "Description de l'extension"
+  }
+}

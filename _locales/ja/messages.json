@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "動画倍速再生コントローラー：HTML5動画速度変更ツール(BoBo)",
+    "description": "拡張機能の表示名"
+  },
+  "shortName": {
+    "message": "BoBo Speed",
+    "description": "拡張機能の短い名前"
+  },
+  "extDesc": {
+    "message": "HTML5動画の再生速度を0.1倍〜16倍まで自由に変更！ショートカットキー操作、巻き戻し/早送り、バッジ表示対応。動画視聴やオンライン学習の時間短縮に最適。",
+    "description": "拡張機能の説明"
+  }
+}

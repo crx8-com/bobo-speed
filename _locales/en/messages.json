@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Video Speed Controller - HTML5 Speed (BoBo)",
+    "description": "Extension display name"
+  },
+  "shortName": {
+    "message": "BoBo Speed",
+    "description": "Extension short name"
+  },
+  "extDesc": {
+    "message": "Speed up or slow down HTML5 videos from 0.1x to 16x with shortcuts, sleek popup controls, and real-time speed badge sync.",
+    "description": "Extension description"
+  }
+}

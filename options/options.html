@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>波波倍速 - 设置</title>
+  <link rel="stylesheet" href="options.css" />
+  <script src="options.js"></script>
+</head>
+
+<body>
+  <div class="options-layout">
+    <!-- 顶部科技风导航栏 Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="brand-badge">
+          <img src="../icons/icon48.png" alt="Logo" class="brand-logo" />
+          <div class="brand-meta">
+            <span class="brand-name">波波倍速</span>
+            <span class="brand-tag">v0.11.1 • 调速神器</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button id="save" class="primary-save-btn" title="保存所有修改">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          <span>保存配置</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div id="panel-settings" class="tab-panel">
+        <!-- 基础偏好卡片组 -->
+        <section class="card-section">
+          <div class="section-header-box">
+            <h2 class="section-title">功能偏好</h2>
+            <p class="section-desc">配置音视频播放、状态记忆及键盘独占响应行为</p>
+          </div>
+
+          <div class="preferences-grid">
+            <div class="preference-card">
+              <div class="pref-content">
+                <label for="rememberSpeed" class="pref-title">记忆播放倍速</label>
+                <span class="pref-desc">自动将最新使用的调速应用到后续打开的所有新视频。</span>
+              </div>
+              <label class="tech-switch">
+                <input id="rememberSpeed" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="preference-card">
+              <div class="pref-content">
+                <label for="audioBoolean" class="pref-title">音频调速支持</label>
+                <span class="pref-desc">为网页中的纯音频播放元素（&lt;audio&gt;）也启用倍速控制器。</span>
+              </div>
+              <label class="tech-switch">
+                <input id="audioBoolean" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="preference-card">
+              <div class="pref-content">
+                <label for="startHidden" class="pref-title">默认隐藏浮层控制器</label>
+                <span class="pref-desc">页面加载时隐藏视频浮层，仅在按下快捷键时显示。</span>
+              </div>
+              <label class="tech-switch">
+                <input id="startHidden" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="preference-card">
+              <div class="pref-content">
+                <label for="exclusiveKeys" class="pref-title">快捷键独占模式</label>
+                <span class="pref-desc">拦截按键冒泡，防止视频网站自带快捷键与调速冲突。</span>
+              </div>
+              <label class="tech-switch">
+                <input id="exclusiveKeys" type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 快捷键配置卡片组 (默认快捷键清晰完整呈现) -->
+        <section class="card-section">
+          <div class="section-header-box flex-between">
+            <div>
+              <h2 class="section-title">快捷键中心</h2>
+              <p class="section-desc">系统预置了最常用的默认快捷键。点击输入框并按下键盘任意键即可修改；按 Backspace 或 Esc 清空。</p>
+            </div>
+            <button id="add" class="tech-btn-secondary" title="添加自定义快捷键规则">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>新增按键绑定</span>
+            </button>
+          </div>
+
+          <div class="shortcuts-card">
+            <div class="shortcuts-table-header">
+              <span class="col-action">执行动作</span>
+              <span class="col-key">对应快捷键</span>
+              <span class="col-val">步进 / 数值</span>
+              <span class="col-del">操作</span>
+            </div>
+            <div id="shortcuts-container" class="shortcuts-list"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 底部状态指示栏 Toast -->
+    <div id="status" class="toast-status"></div>
+  </div>
+</body>
+
+</html>
